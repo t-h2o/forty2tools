@@ -6,6 +6,9 @@ help () {
 }
 
 main () {
+	# Set a file name
+	file_name=$(printf "%s.h" ${1} | awk '{print tolower($0)}')
+
 	# Set to upper the argument and append _H
 	header_guard_name=$(printf "%s_H" ${1} | awk '{print toupper($0)}')
 
@@ -24,6 +27,10 @@ main () {
 
 	printf '%s\n' "${function_protoypes}"
 
+	# Print the header guard into a new file
+	printf "#ifndef %s\n" ${header_guard_name} > ${file_name}
+	printf "#define %s\n\n\n" ${header_guard_name} >> ${file_name}
+	printf "#endif /* %s */\n" ${header_guard_name} >> ${file_name}
 }
 
 # Check the number of arguments
