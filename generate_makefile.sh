@@ -100,7 +100,8 @@ INCD	=	headers
 }
 
 makefile_sources () {
-	find srcs -type f -printf "SRCS	+=	\$(SRCD)/%f\n" >> Makefile
+	find srcs -type f -name "main.c" -printf "SRCS	=	\$(SRCD)/%f\n" >> Makefile
+	find srcs -type f ! -name "main.c" -printf "SRCS	+=	\$(SRCD)/%f\n" >> Makefile
 }
 
 makefile_headers () {
