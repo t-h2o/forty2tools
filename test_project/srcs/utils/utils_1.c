@@ -4,3 +4,8 @@ void	do_thing(int i)
 {
 	(void)i;
 }
+
+void	main_string_test(void)
+{
+	;
+}

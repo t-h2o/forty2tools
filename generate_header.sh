@@ -13,7 +13,7 @@ main () {
 	header_guard_name=$(printf "%s_H" ${1} | awk '{print toupper($0)}')
 
 	#find protoypes using ctags
-	function_protoypes=$(ctags -Rx ${2} | grep 'function' | grep -v static | sed -re 's,\s+, ,g' | cut -d ' ' -f 5-)
+	function_protoypes=$(ctags -Rx ${2} | grep 'function' | grep -v static | grep -vw main | sed -re 's,\s+, ,g' | cut -d ' ' -f 5-)
 	# ctags -Rx
 	#	x to output to terminal in humanreadable form
 	#	R to recursivly search the directory
