@@ -22,9 +22,6 @@ main () {
 	# cut -d ' ' -f 5-)
 	#	split the line into colums using ' ' as delim and take everything from the 5th column
 
-	# Print the header guard name
-	echo ${header_guard_name}
-
 	# Print the header guard into a new file
 	printf "#ifndef %s\n" ${header_guard_name} > ${file_name}
 	printf "#define %s\n\n" ${header_guard_name} >> ${file_name}
