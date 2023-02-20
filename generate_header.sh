@@ -25,8 +25,9 @@ main () {
 	# Print the header guard into a new file
 	printf "#ifndef %s\n" ${header_guard_name} > ${file_name}
 	printf "#define %s\n\n" ${header_guard_name} >> ${file_name}
-
-	printf '%s\n\n' "${function_protoypes}" >> ${file_name}
+# | unexpand -a -t 2
+	printf '%s' "${function_protoypes}" | awk '{print $0 ";"}' | sed 's/ /:/1' | column -s ':' -t | unexpand -t2 >> ${file_name}
+	printf '\n' >> ${file_name}
 
 	printf "#endif /* %s */\n" ${header_guard_name} >> ${file_name}
 }
