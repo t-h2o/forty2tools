@@ -25,11 +25,12 @@ main () {
 	# Print the header guard name
 	echo ${header_guard_name}
 
-	printf '%s\n' "${function_protoypes}"
-
 	# Print the header guard into a new file
 	printf "#ifndef %s\n" ${header_guard_name} > ${file_name}
-	printf "#define %s\n\n\n" ${header_guard_name} >> ${file_name}
+	printf "#define %s\n\n" ${header_guard_name} >> ${file_name}
+
+	printf '%s\n\n' "${function_protoypes}" >> ${file_name}
+
 	printf "#endif /* %s */\n" ${header_guard_name} >> ${file_name}
 }
 
