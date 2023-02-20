@@ -2,7 +2,7 @@
 printf "generate header automatically from source folder\n"
 
 help () {
-	printf "usage: [header_name] [srcs_directory]"
+	printf "usage: [header_name] [srcs_directory]\n"
 }
 
 main () {
